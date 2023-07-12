@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "swn-discord-bot"
+version = "0.1.0"
+description = ""
+authors = ["transunlight <thetruthshaper@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/transunlight/swn-discord-bot"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+pylint = "^2.17.5"
+pytest = "^7.4.0"
+coverage = "^7.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
