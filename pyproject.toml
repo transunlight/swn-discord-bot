@@ -8,6 +8,8 @@ repository = "https://github.com/transunlight/swn-discord-bot"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+python-dotenv = "^1.0.0"
+discord-py = "^2.3.2"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
