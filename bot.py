@@ -16,6 +16,7 @@ if TYPE_CHECKING:
 
 extensions = [
     "cogs.admin",
+    "cogs.meta",
 ]
 
 
