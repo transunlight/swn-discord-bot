@@ -14,6 +14,11 @@ if TYPE_CHECKING:
     from discord import Intents, Message
 
 
+extensions = [
+    "cogs.admin",
+]
+
+
 def _prefix_callable(bot: SWNBot, msg: Message):
     extras = ["!", "?", ""] if msg.guild is None else bot.prefixes_for(msg.guild.id)
     return commands.when_mentioned_or(*extras)(bot, msg)
@@ -37,6 +42,9 @@ class SWNBot(commands.Bot):
     async def setup_hook(self):
         await super().setup_hook()
         await self.load_prefixes()
+
+        for extension in extensions:
+            await self.load_extension(extension)
 
     async def load_prefixes(self):
         """Load the prefixes from the database into the bot"""
