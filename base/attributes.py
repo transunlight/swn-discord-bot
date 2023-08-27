@@ -1,13 +1,14 @@
 """
 Module defines classes:
 - Attribute
+- Attributes
 
 Used for storing attributes of a character
 """
 
 from __future__ import annotations
 
-from attrs import define, field
+from attrs import define, field, frozen
 from attrs.validators import instance_of, le, ge
 
 
@@ -33,3 +34,28 @@ class Attribute:
 
     def __str__(self) -> str:
         return f"{self.score} ({self.mod:+})"
+
+
+@frozen
+class Attributes:
+    """
+    Class for holding attributes:
+        strength, dexterity, constitution, intelligence, wisdom, charisma
+    """
+
+    strength: Attribute = field(converter=Attribute)
+    dexterity: Attribute = field(converter=Attribute)
+    constitution: Attribute = field(converter=Attribute)
+    intelligence: Attribute = field(converter=Attribute)
+    wisdom: Attribute = field(converter=Attribute)
+    charisma: Attribute = field(converter=Attribute)
+
+    def __str__(self):
+        return (
+            f"**STR**: {self.strength!s}"
+            f"**DEX**: {self.dexterity!s}"
+            f"**CON**: {self.constitution!s}"
+            f"**INT**: {self.intelligence!s}"
+            f"**WIS**: {self.wisdom!s}"
+            f"**CHA**: {self.charisma!s}"
+        )
