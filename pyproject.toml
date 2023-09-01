@@ -16,6 +16,14 @@ black = "^23.7.0"
 pylint = "^2.17.5"
 pytest = "^7.4.0"
 coverage = "^7.3.0"
+dpytest = "^0.7.0"
+pylint-pytest = "^1.1.2"
+
+[tool.pytest.ini_options]
+filterwarnings = ["ignore:'audioop' is deprecated:DeprecationWarning"]
+
+[tool.coverage.report]
+exclude_also = ["if TYPE_CHECKING:"]
 
 [build-system]
 requires = ["poetry-core"]
