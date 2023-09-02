@@ -25,6 +25,13 @@ filterwarnings = ["ignore:'audioop' is deprecated:DeprecationWarning"]
 [tool.coverage.report]
 exclude_also = ["if TYPE_CHECKING:"]
 
+[tool.poe.tasks]
+clean = "rm -rf ./**/__pycache__ .coverage .pytest_cache"
+lint = "pylint --recursive=y ."
+_test_run = "coverage run -m pytest"
+_test_report = "coverage report -m"
+test = ["_test_run", "_test_report", "clean"]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
