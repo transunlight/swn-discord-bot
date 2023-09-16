@@ -2,11 +2,15 @@
 Module defines classes:
 - Skill
 - AbstractSkills
+- Skills
+- PsychicSkills
 
 Used for storing skills of a character
 """
 
 from abc import ABC
+
+from .consts import SKILLS, PSYCHIC_SKILLS
 
 
 class Skill:
@@ -96,3 +100,15 @@ class AbstractSkills(ABC):
         """Train the skills by the levels given"""
         for key, value in skills.items():
             getattr(self, key).train(value)
+
+
+class Skills(AbstractSkills):
+    """Class for storing non-psychic skills"""
+
+    __slots__ = SKILLS
+
+
+class PsychicSkills(AbstractSkills):
+    """Class for storing psychic skills"""
+
+    __slots__ = PSYCHIC_SKILLS
