@@ -9,7 +9,7 @@ from unittest.mock import call, create_autospec, patch
 
 import pytest
 
-from base.skills import Skill, AbstractSkills
+from base.skills import Skill, AbstractSkills, Skills, PsychicSkills
 
 if TYPE_CHECKING:
     from unittest.mock import Mock
@@ -122,3 +122,13 @@ class TestAbstractSkills:
         AbstractSkills.train(_mock_concrete_skills, train_dict)
         for attr, value in train_dict.items():
             getattr(_mock_concrete_skills, attr).train.assert_called_once_with(value)
+
+
+def test_class_skills():
+    # Test __slots__?
+    assert Skills.mro()[1] == AbstractSkills
+
+
+def test_class_psychic_skills():
+    # Test __slots__?
+    assert PsychicSkills.mro()[1] == AbstractSkills
